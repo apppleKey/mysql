@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 var sqlOpeate = module.exports;
-
+var moment=require("moment")
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -70,8 +70,8 @@ sqlOpeate.add = function (data) {
                     // reject();
                 }
                 else if (result.length == 0) {
-                    var addSql = 'INSERT INTO mytb(time,raceName,raceLink,typeName,raceNameLink,raceRival) VALUES(?,?,?,?,?,?)';
-                    var addSqlParams = [data.time, data.raceName, data.raceLink, data.typeName, data.raceNameLink, data.raceRival];
+                    var addSql = 'INSERT INTO mytb(time,raceName,raceLink,typeName,raceNameLink,raceRival,update) VALUES(?,?,?,?,?,?,?)';
+                    var addSqlParams = [data.time, data.raceName, data.raceLink, data.typeName, data.raceNameLink, data.raceRival,moment().format("YYYY-MM-DD HH:ss:mm")];
                   
                     connection.query(addSql, addSqlParams, function (err) {
                         if (err) {

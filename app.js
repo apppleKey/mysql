@@ -18,12 +18,11 @@ function exec() {
         fs.writeFileSync("hehe.html", content)
         // const content=fs.readFileSync("hehe.html")
         const data = dealData.dealContent(content) || [];
-        for (var i = data.length - 1; ; i--) {
+        for (var i = data.length - 1; i>=0; i--) {
             // await sqlOpeate.open();
             // console.log(JSON.stringify(data[i]))
             await sqlOpeate.add(data[i]);
 
-            // await sqlOpeate.close();
         }
     })()
 }
